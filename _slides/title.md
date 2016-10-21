@@ -1,14 +1,12 @@
 ---
 ---
 
-# {{ site.title }}
+# Introduction to basic NetLogo
 
-Lesson {{ site.lesson }} with *Ian Carroll*
+This tutorial will introduce you to:
 
-<aside class="notes" markdown="block">
+1. Using the NetLogo user interface (UI) to run models
+2. Modifying model parameters with the UI to run experiments 
+3. Simple commands
+4. Procedures to alter and extend existing models
 
-As your research project moves from conception, through data collection and analysis, to reporting and other forms of dissemination, the many components can fracture, lose their development history, and -- worst of all -- become conflicted.
-
-</aside>
-
-This lesson gives a high level overview of workflows to organize your project and introduces an accompanying software solution, `git`.

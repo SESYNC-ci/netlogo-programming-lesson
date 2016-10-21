@@ -1,4 +1,4 @@
 Role | Page
 ---|---
-Instructor | https://sesync-ci.github.io/basic-git-lesson/instructor
-Trainee | https://sesync-ci.github.io/basic-git-lesson
+Instructor | https://sesync-ci.github.io/basic-netlogo-lesson/instructor
+Trainee | https://sesync-ci.github.io/basic-netlogo-lesson

@@ -1,10 +1,6 @@
 ---
 ---
 
-## Where to from here?
+## Acknowledgements & Support
 
-The repository you created is an example of the heart of a distributed workflow. Putting the **origin** of your project on GitHub (or similar) will make it accessible not only by your collaborators, but also availabe for review and extension by your research community.
-
-Using `git` to manage contributions to the project as a branching and merging "tree" of commits accomplishes two objectives. First, work can safely proceed in parallel, even on the same documents. Second, a recoverable (and auditable) trail of changes is immediately available in the project history.
-
-Sharing project files, including managing multiple "copies" during development or at public release, in a hub-and-spokes workflow is a streamlined **cloning** process. The **origin** always has the "most recent" version of any documents: conflicts must be resolved in the local clone before new commits can be shared.
+Portions of the instructional materials are adopted from [Andrew Crooks](http://www.gisagents.org/){:target="_blank"}, Melanie Swartz, and the [NetLogo User Manual](https://ccl.northwestern.edu/netlogo/docs/sample.html){:target="_blank"}.

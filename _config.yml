@@ -1,28 +1,22 @@
 # Site
 
-title: "Collaborative & Reproducible Workflows"
+title: "Introduction to basic NetLogo"
 email: "cyberhelp@sesync.org"
-description: "Learn tools for collaborative and reproducible research."
-#baseurl: /basic-git-lesson
+description: "Meet the NetLogo environment for agent-based modeling."
 styleurl: https://cdn.rawgit.com/sesync-ci/lesson-stylesheets/1.0.1
 #styleurl: https://rawgit.com/sesync-ci/lesson-stylesheets/master
 reveal: https://cdn.rawgit.com/hakimel/reveal.js/3.3.0
 authors:
-  - Ian Carroll
+  - Nick Magliocca
 lesson: 1
 
 # Slides
 
 slide_sorter:
   - title
-  - workflows
-  - intro
-  - goals
-  - reproducible
-  - github
-#  - rstudio
-  - readme
-  - save
+  - overview
+  - simple
+  - spatial
   - conclude
 
 # Jekyll
