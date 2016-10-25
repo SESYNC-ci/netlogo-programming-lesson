@@ -8,15 +8,18 @@ styleurl: https://cdn.rawgit.com/sesync-ci/lesson-stylesheets/1.0.1
 reveal: https://cdn.rawgit.com/hakimel/reveal.js/3.3.0
 authors:
   - Nick Magliocca
-lesson: 1
+lesson:
 
 # Slides
 
 slide_sorter:
   - title
-  - overview
-  - simple
-  - spatial
+  - turtles
+  - environment
+  - monitors
+  - switches
+  - behavior
+  - plot
   - conclude
 
 # Jekyll
