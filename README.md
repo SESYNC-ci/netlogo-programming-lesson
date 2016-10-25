@@ -5,5 +5,6 @@
 
 > The lesson content is also available as a [slideshow] for SESYNC instructors.
 
+[www.sesync.org]: https://www.sesync.org
 [lesson]: https://sesync-ci.github.io/netlogo-programming-lesson
 [slideshow]: https://sesync-ci.github.io/netlogo-programming-lesson/instructor
