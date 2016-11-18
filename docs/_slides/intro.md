@@ -1,7 +1,7 @@
 ---
 ---
 
-# NetLogo Procedures
+## NetLogo Procedures
 
 Thus far, we have covered how to access, modify, and direct all entities in NetLogo.
 
