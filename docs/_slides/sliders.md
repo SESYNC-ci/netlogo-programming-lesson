@@ -15,7 +15,7 @@ to setup-turtles
   create-turtles number-of-agents
 end
 ~~~
-{: .input}
+{:.text-document title='{{ site.worksheet }}'}
 
 Go back to the Interface, move the slider to change the number of agents, and click "setup" and "go".
 
@@ -44,7 +44,7 @@ to eat-grass
   ]
 end
 ~~~
-{: .input}
+{:.text-document title='{{ site.worksheet }}'}
 
 ===
 
@@ -62,7 +62,7 @@ to reproduce
   ]
 end
 ~~~
-{: .input}
+{:.text-document title='{{ site.worksheet }}'}
 
 ===
 

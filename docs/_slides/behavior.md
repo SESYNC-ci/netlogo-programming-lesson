@@ -3,11 +3,11 @@
 
 ## More Dynamics and Behavior
 
-Now our turtles are eating. Let's make them reproduce and die, and have the grass grow back. 
+Now our turtles are eating. Let's make them reproduce and die, and have the grass grow back.
 
-We'll add all three of these of these behaviors now, by making three separate procedures, one for each behavior. 
+We'll add all three of these behaviors now, by making three separate procedures, one for each behavior.
 
-Rewrite the `go` procedure as follows to add more procedures: 
+Rewrite the `go` procedure as follows to add more procedures:
 
 ~~~
 to go
@@ -19,13 +19,13 @@ to go
   tick
 end
 ~~~
-{: .input}
+{:.text-document title='{{ site.worksheet }}'}
 
 ===
 
-### Add procedure for reproduction
+## Procedure for reproduction
 
-Add the procedures for `reproduce`, check-death, and regrow-grass as shown below: 
+Add the procedures for `reproduce`, `check-death`, and `regrow-grass`, starting with `reproduce`  as shown below: 
 
 ~~~
 to reproduce
@@ -37,11 +37,11 @@ to reproduce
   ]
 end
 ~~~
-{: .input}
+{:.text-document title='{{ site.worksheet }}'}
 
 ===
 
-### Interpreting the `reproduce` procedure
+## Interpreting the `reproduce` procedure
 
 When each turtle runs `reproduce`, it checks the value of the turtle's energy variable. 
 
@@ -53,9 +53,9 @@ The hatch command is a NetLogo primitive which looks like this: hatch number [ c
 
 ===
 
-### Add procedure for death
+## Procedure for death
 
-Add the procedures for `check-death`:
+Add the following code for `check-death`:
 
 ~~~
 to check-death
@@ -64,11 +64,11 @@ to check-death
   ]
 end
 ~~~
-{: .input}
+{:.text-document title='{{ site.worksheet }}'}
 
 ===
 
-### Interpreting the `check-death` procedure
+## Interpreting the `check-death` procedure
 
 Each turtle, when it runs check-death it will check to see if its energy is less or equal to 0. 
 
@@ -76,7 +76,7 @@ If this is true, then the turtle is told to die (die is a NetLogo primitive).
 
 ===
 
-### Add procedure for regrowing the grass
+## Procedure for regrowing the grass
 
 Add the procedures for `regrow-grass` as shown below:
 
@@ -87,11 +87,11 @@ to regrow-grass
   ]
 end
 ~~~
-{: .input}
+{:.text-document title='{{ site.worksheet }}'}
 
 ===
 
-### Interpreting the `regrow-grass` procedure
+## Interpreting the `regrow-grass` procedure
 
 When each patch runs `regrow-grass` it will check to see if a random integer from 0 to 99 is less than 3. 
 
@@ -99,7 +99,7 @@ If so, the patch color is set to green. This will happen 3% of the time (on aver
 
 ===
 
-### Run it!
+## Run it!
 
 Go back to the Interface, toggle the energy switch to "off", and click the "setup" and "go" buttons.
 

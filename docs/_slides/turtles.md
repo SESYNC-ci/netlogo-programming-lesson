@@ -3,17 +3,13 @@
 
 ## Let's create a new model!
 
-**Objective**: Create a simple ecosystem model of vegetation growth, herbivore grazing, and herbivore life cycle.
-
-To start a new model, select "New" from the File menu. 
-
-Begin by creating a setup button with the following steps:
+To start a new model, select `New` from the `File` menu. Begin by creating a setup button with the following steps:
 
 1. Click the "Add" icon in the toolbar at the top of the Interface tab. 
-2. On the menu next to Add, select Button (if it isn't already selected). 
-3. Click wherever you want the button to appear in the empty white area of the Interface tab. 
-4. A dialog box for editing the button opens. Type setup in the box labeled "Commands". 
-5. Press the OK button when you're done; the dialog box closes.
+1. On the menu next to Add, select Button (if it isn't already selected). 
+1. Click wherever you want the button to appear in the empty white area of the Interface tab. 
+1. A dialog box for editing the button opens. Type setup in the box labeled "Commands". 
+1. Press the OK button when you're done; the dialog box closes.
 
 Red sticky notes if this didn't work for you.
 
@@ -29,7 +25,7 @@ If you want to see the actual error message, click the button.
 
 ===
 
-### Create the setup procedure
+## Create the setup procedure
 
 Swtich to the code tab and type:
 
@@ -40,15 +36,16 @@ to setup
   reset-ticks
 end
 ~~~
-{: .input}
+{:.text-document title='{{ site.worksheet }}'}
 
 Note: Every procedure begins with `to` and ends with `end`.
 
 ===
 
-### Understanding the setup procedure
+## Understanding the setup procedure
 
-What do these lines of code do? 
+What do these lines of code do?
+
 - `to setup` begins defining a procedure named "setup". 
 - `clear-all` resets the world to an initial, empty state. All the patches turn black and any turtles you might have created disappear. Basically, it wipes the slate clean for a new model run. 
 - `create-turtles 100` creates 100 turtles. They start out standing at the origin, that is, the center of patch 0,0. 
@@ -61,7 +58,7 @@ Switch to the Interface tab and press the setup button you made before. Repeat t
 
 ===
 
-### Control the View
+## Control the View
 
 Now that we're using the tick counter (automatically created with `reset-ticks`), we should tell NetLogo that it only needs to update the view once per tick, instead of continuously updating it. 
 
@@ -70,9 +67,10 @@ Now that we're using the tick counter (automatically created with `reset-ticks`)
 
 ===
 
-### Make the Go button
+## Make the Go button
 
 Now make a button called "go". Follow the same steps you used to make the setup button, except: 
+
 - For Commands enter `go` instead of `setup`. 
 - Check the "Forever" checkbox in the edit dialog. 
 - Check the "Disable until ticks start" checkbox too. 
@@ -83,7 +81,7 @@ The "Disable until ticks start" prevents you from pressing go before setup.
 
 ===
 
-### Add the Go procedure
+## Add the Go procedure
 
 ~~~
 to go
@@ -91,7 +89,7 @@ to go
   tick
 end
 ~~~
-{: .input}
+{:.text-document title='{{ site.worksheet }}'}
 
 `tick` is a primitive (i.e., built-in to NetLogo) that advances the tick counter by one tick. 
 
@@ -99,7 +97,7 @@ end
 
 ===
 
-### Add the Move procedure
+## Add the Move procedure
 
 Add the `move-turtles` procedure after the `go` procedure: 
 
@@ -111,7 +109,7 @@ to move-turtles
   ]
 end
 ~~~
-{: .input}
+{:.text-document title='{{ site.worksheet }}'}
 
 Note there are no spaces around the hyphen in `move-turtles`. Earlier, we used `red - 2`, with spaces, in order to subtract two numbers, but here we want `move-turtles`, without spaces. The "-" combines "move" and "turtles" into a single name.
 
@@ -121,7 +119,7 @@ Green sticky notes when you've gotten this to work.
 
 ===
 
-### Coding best practice
+## Coding best practices
 
 Why couldn't we have just written all of these commands in `go` instead of in a separate procedure?
 
