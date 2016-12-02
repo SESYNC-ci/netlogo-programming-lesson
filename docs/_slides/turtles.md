@@ -53,8 +53,6 @@ What do these lines of code do?
 
 ===
 
-## Understanding the Setup Procedure
-
 - `setxy random-xcor random-ycor` is a command using "reporters". A reporter, as opposed to a command, reports a result. First each turtle runs the reporter random-xcor which will report a random number from the allowable range of turtle coordinates along the X axis. Then each turtle runs the reporter random-ycor, same for the Y axis. Finally each turtle runs the `setxy` command with those two numbers as inputs. That makes the turtle move to the point with those coordinates. 
 - `reset-ticks` starts the tick counter, now that setup is otherwise complete. 
 - `end completes` the definition of the "setup" procedure. 
@@ -119,8 +117,6 @@ end
 Note there are no spaces around the hyphen in `move-turtles`. Earlier, we used `red - 2`, with spaces, in order to subtract two numbers, but here we want `move-turtles`, without spaces. The "-" combines "move" and "turtles" into a single name.
 
 ===
-
-## Add the Move Procedure
 
 Once finished adding the code, go back to the Interface, click `setup` to initialize and `go` to make your agents move.
 
