@@ -50,7 +50,7 @@ Green sticky notes when you've gotten this to work.
 
 ===
 
-### Adding turtle Attributes and Behavior
+## Adding Turtle Attributes and Behavior
 
 Thus far, our turtles are just running around. Let's add some interaction between the turtles and the patches. 
 
@@ -83,6 +83,8 @@ to go
 end
 ~~~
 {:.text-document title='{{ site.worksheet }}'}
+
+===
 
 ## The `if` statement
 
@@ -120,7 +122,7 @@ The commands make the turtle change the patch color to black and increase its ow
 
 ===
 
-### Movement costs energy
+## Movement Costs Energy
 
 Next, let's make the movement of turtles use up some of the turtle's energy. 
 
