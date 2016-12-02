@@ -9,6 +9,6 @@ Comments begin with ";;" and continue to the end of the line. In the Code tab, c
 
 ===
 
-### Acknowledgements & Support
+## Acknowledgements & Support
 
 Portions of the instructional materials are adopted from Tutorial #3 in the [NetLogo User Manual](https://ccl.northwestern.edu/netlogo/docs/tutorial3.html){:target="_blank"}.
