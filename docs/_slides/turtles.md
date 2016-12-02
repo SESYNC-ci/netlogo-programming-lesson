@@ -1,7 +1,7 @@
 ---
 ---
 
-## Let's create a new model!
+## Let's Create a New Model!
 
 To start a new model, select `New` from the `File` menu. Begin by creating a setup button with the following steps:
 
@@ -25,7 +25,7 @@ If you want to see the actual error message, click the button.
 
 ===
 
-## Create the setup procedure
+## Create the Setup Procedure
 
 Swtich to the code tab and type:
 
@@ -42,7 +42,7 @@ Note: Every procedure begins with `to` and ends with `end`.
 
 ===
 
-## Understanding the setup procedure
+## Understanding the Setup Procedure
 
 What do these lines of code do?
 
@@ -67,7 +67,7 @@ Now that we're using the tick counter (automatically created with `reset-ticks`)
 
 ===
 
-## Make the Go button
+## Make the Go Button
 
 Now make a button called "go". Follow the same steps you used to make the setup button, except: 
 
@@ -81,7 +81,7 @@ The "Disable until ticks start" prevents you from pressing go before setup.
 
 ===
 
-## Add the Go procedure
+## Add the Go Procedure
 
 ~~~
 to go
@@ -93,7 +93,7 @@ end
 
 `tick` is a primitive (i.e., built-in to NetLogo) that advances the tick counter by one tick. 
 
-`move-turtles` is not and we need to add another procedure. Note that it is common that one procedure might have (many) others nested within (i.e., dependencies).
+`move-turtles` is not, and we need to add another procedure. Note that it is common that one procedure might have (many) others nested within (i.e., dependencies).
 
 ===
 
@@ -113,13 +113,15 @@ end
 
 Note there are no spaces around the hyphen in `move-turtles`. Earlier, we used `red - 2`, with spaces, in order to subtract two numbers, but here we want `move-turtles`, without spaces. The "-" combines "move" and "turtles" into a single name.
 
+===
+
 Once finished adding the code, go back to the Interface, click `setup` to initialize and `go` to make your agents move.
 
 Green sticky notes when you've gotten this to work.
 
 ===
 
-## Coding best practices
+## Coding Best Practices
 
 Why couldn't we have just written all of these commands in `go` instead of in a separate procedure?
 
