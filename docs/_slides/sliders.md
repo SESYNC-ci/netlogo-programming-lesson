@@ -10,6 +10,7 @@ Let's vary the number of turtles we start with.
 - Create a slider named "number-of-turtles": click the Add icon on the toolbar, select Slider next to it, and click on an open spot in the interface. 
 - Then inside of setup-turtles, instead of create-turtles 100 you can type: 
 
+
 ~~~
 to setup-turtles
   create-turtles number-of-agents
@@ -23,7 +24,7 @@ Red sticky notes if this did not work for you.
 
 ===
 
-### More Sliders
+## More Sliders
 
 Adjust the energy the turtles gain and lose as they eat grass and reproduce.
 
@@ -66,7 +67,7 @@ end
 
 ===
 
-### Challenge
+## Challenge
 
 Are there other parameters that could be varied? Write one or more sliders for these parameters.
 
