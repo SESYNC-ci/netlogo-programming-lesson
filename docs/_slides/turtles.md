@@ -53,7 +53,7 @@ What do these lines of code do?
 
 ===
 
-##Understanding the Setup Procedure (Cont.)
+## Understanding the Setup Procedure (Cont.)
 
 - `setxy random-xcor random-ycor` is a command using "reporters". A reporter, as opposed to a command, reports a result. First each turtle runs the reporter random-xcor which will report a random number from the allowable range of turtle coordinates along the X axis. Then each turtle runs the reporter random-ycor, same for the Y axis. Finally each turtle runs the `setxy` command with those two numbers as inputs. That makes the turtle move to the point with those coordinates. 
 - `reset-ticks` starts the tick counter, now that setup is otherwise complete. 
