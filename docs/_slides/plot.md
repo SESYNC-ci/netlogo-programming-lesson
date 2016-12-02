@@ -52,7 +52,7 @@ You can also use the tick counter for other things, such as to set a limit on th
 
 ===
 
-### Set the limit of a model run
+## Set the limit of a model run
 
 Change the go procedure: 
 
