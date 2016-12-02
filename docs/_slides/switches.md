@@ -3,7 +3,7 @@
 
 ## Switches and Labels
 
-What else is going on that we can track? Turtles are gaining and losing energy as the move around and graze.
+What else is going on that we can track? Turtles are gaining and losing energy as they move around and graze.
 
 Let's create a switch to allow us to toggle energy reporting on and off.
 
@@ -39,13 +39,15 @@ end
 ~~~
 {:.text-document title='{{ site.worksheet }}'}
 
+===
+
 Go back to the Interface, toggle the energy switch to "on", and click the "setup" and "go" buttons.
 
 Green sticky notes when you get this to work.
 
 ===
 
-## How does `ifelse` work?
+## How Does `ifelse` Work?
 
 The `eat-grass` procedure introduces the `ifelse` command.
 
