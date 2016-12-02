@@ -23,7 +23,7 @@ end
 
 ===
 
-## Procedure for reproduction
+## Procedure for Reproduction
 
 Add the procedures for `reproduce`, `check-death`, and `regrow-grass`, starting with `reproduce`  as shown below: 
 
@@ -70,7 +70,7 @@ end
 
 ## Interpreting the `check-death` procedure
 
-Each turtle, when it runs check-death it will check to see if its energy is less or equal to 0. 
+Each turtle, when it runs check-death it will check to see if its energy is less than or equal to 0. 
 
 If this is true, then the turtle is told to die (die is a NetLogo primitive).
 
@@ -101,7 +101,7 @@ If so, the patch color is set to green. This will happen 3% of the time (on aver
 
 ## Run it!
 
-Go back to the Interface, toggle the energy switch to "off", and click the "setup" and "go" buttons.
+Go back to the Interface, toggle the energy switch to "off," and click the "setup" and "go" buttons.
 
 Green sticky notes when you get this to work.
 
