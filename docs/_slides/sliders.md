@@ -12,7 +12,7 @@ Let's vary the number of turtles we start with.
 
 ~~~
 to setup-turtles
-  create-turtles number-of-agents
+  create-turtles number-of-turtles
 end
 ~~~
 {:.text-document title='Code'}
