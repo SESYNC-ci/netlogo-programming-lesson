@@ -15,7 +15,7 @@ to setup
   reset-ticks
 end
 ~~~
-{:.text-document title='{{ site.worksheet }}'}
+{:.text-document title='{{ site.handouts }}'}
 
 The new definition of `setup` refers to two new procedures we need to define.
 
@@ -28,7 +28,7 @@ to setup-patches
   ask patches [ set pcolor green ]
 end
 ~~~
-{:.text-document title='{{ site.worksheet }}'}
+{:.text-document title='{{ site.handouts }}'}
 
 The `setup-patches` procedure sets the color of every patch to green to start with.
 
@@ -42,7 +42,7 @@ to setup-turtles
   ask turtles [ setxy random-xcor random-ycor ]
 end
 ~~~
-{:.text-document title='{{ site.worksheet }}'}
+{:.text-document title='{{ site.handouts }}'}
 
 Go back to the interface, click "setup" and "go".
 
@@ -67,7 +67,7 @@ Call it energy:
 ~~~
 turtles-own [energy]
 ~~~
-{:.text-document title='{{ site.worksheet }}'}
+{:.text-document title='{{ site.handouts }}'}
 
 ===
 
@@ -82,7 +82,7 @@ to go
   tick
 end
 ~~~
-{:.text-document title='{{ site.worksheet }}'}
+{:.text-document title='{{ site.handouts }}'}
 
 ===
 
@@ -100,7 +100,7 @@ to eat-grass
   ]
 end
 ~~~
-{:.text-document title='{{ site.worksheet }}'}
+{:.text-document title='{{ site.handouts }}'}
 
 ===
 
@@ -116,7 +116,7 @@ to eat-grass
   ]
 end
 ~~~
-{:.text-document title='{{ site.worksheet }}'}
+{:.text-document title='{{ site.handouts }}'}
 
 The commands make the turtle change the patch color to black and increase its own energy by 10. The patch turns black to signify that the grass at that spot has been eaten.
 
@@ -137,7 +137,7 @@ to move-turtles
   ]
 end
 ~~~
-{:.text-document title='{{ site.worksheet }}'}
+{:.text-document title='{{ site.handouts }}'}
 
 Switch back to the Interface, click "setup" and "go", and watch your turtles graze!
 

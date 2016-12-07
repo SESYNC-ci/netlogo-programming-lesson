@@ -67,7 +67,7 @@ to go
   tick
 end
 ~~~
-{:.text-document title='{{ site.worksheet }}'}
+{:.text-document title='{{ site.handouts }}'}
 
 Now setup and run the model. 
 

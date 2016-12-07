@@ -36,7 +36,7 @@ to setup
   reset-ticks
 end
 ~~~
-{:.text-document title='{{ site.worksheet }}'}
+{:.text-document title='{{ site.handouts }}'}
 
 Note: Every procedure begins with `to` and ends with `end`.
 
@@ -92,7 +92,7 @@ to go
   tick
 end
 ~~~
-{:.text-document title='{{ site.worksheet }}'}
+{:.text-document title='{{ site.handouts }}'}
 
 `tick` is a primitive (i.e., built-in to NetLogo) that advances the tick counter by one tick. 
 
@@ -112,7 +112,7 @@ to move-turtles
   ]
 end
 ~~~
-{:.text-document title='{{ site.worksheet }}'}
+{:.text-document title='{{ site.handouts }}'}
 
 Note there are no spaces around the hyphen in `move-turtles`. Earlier, we used `red - 2`, with spaces, in order to subtract two numbers, but here we want `move-turtles`, without spaces. The "-" combines "move" and "turtles" into a single name.
 

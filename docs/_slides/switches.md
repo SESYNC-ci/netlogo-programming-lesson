@@ -37,7 +37,7 @@ to eat-grass
   ]
 end
 ~~~
-{:.text-document title='{{ site.worksheet }}'}
+{:.text-document title='{{ site.handouts }}'}
 
 ===
 

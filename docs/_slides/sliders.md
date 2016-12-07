@@ -10,13 +10,12 @@ Let's vary the number of turtles we start with.
 - Create a slider named "number-of-turtles": click the Add icon on the toolbar, select Slider next to it, and click on an open spot in the interface. 
 - Then inside of setup-turtles, instead of create-turtles 100 you can type: 
 
-
 ~~~
 to setup-turtles
   create-turtles number-of-agents
 end
 ~~~
-{:.text-document title='{{ site.worksheet }}'}
+{:.text-document title='{{ site.handouts }}'}
 
 Go back to the Interface, move the slider to change the number of agents, and click "setup" and "go".
 
@@ -45,7 +44,7 @@ to eat-grass
   ]
 end
 ~~~
-{:.text-document title='{{ site.worksheet }}'}
+{:.text-document title='{{ site.handouts }}'}
 
 ===
 
@@ -63,7 +62,7 @@ to reproduce
   ]
 end
 ~~~
-{:.text-document title='{{ site.worksheet }}'}
+{:.text-document title='{{ site.handouts }}'}
 
 ===
 
