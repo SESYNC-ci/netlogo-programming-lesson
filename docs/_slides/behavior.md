@@ -19,7 +19,7 @@ to go
   tick
 end
 ~~~
-{:.text-document title='{{ site.handouts }}'}
+{:.text-document title='Code'}
 
 ===
 
@@ -37,7 +37,7 @@ to reproduce
   ]
 end
 ~~~
-{:.text-document title='{{ site.handouts }}'}
+{:.text-document title='Code'}
 
 ===
 
@@ -64,7 +64,7 @@ to check-death
   ]
 end
 ~~~
-{:.text-document title='{{ site.handouts }}'}
+{:.text-document title='Code'}
 
 ===
 
@@ -87,7 +87,7 @@ to regrow-grass
   ]
 end
 ~~~
-{:.text-document title='{{ site.handouts }}'}
+{:.text-document title='Code'}
 
 ===
 

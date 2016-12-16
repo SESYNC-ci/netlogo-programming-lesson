@@ -12,10 +12,10 @@ Let's vary the number of turtles we start with.
 
 ~~~
 to setup-turtles
-  create-turtles number-of-agents
+  create-turtles number-of-turtles
 end
 ~~~
-{:.text-document title='{{ site.handouts }}'}
+{:.text-document title='Code'}
 
 Go back to the Interface, move the slider to change the number of agents, and click "setup" and "go".
 
@@ -44,7 +44,7 @@ to eat-grass
   ]
 end
 ~~~
-{:.text-document title='{{ site.handouts }}'}
+{:.text-document title='Code'}
 
 ===
 
@@ -62,7 +62,7 @@ to reproduce
   ]
 end
 ~~~
-{:.text-document title='{{ site.handouts }}'}
+{:.text-document title='Code'}
 
 ===
 
