@@ -96,7 +96,6 @@ Add a new `eat-grass` procedure below the `move-turtle` procedure:
 to eat-grass
   ask turtles [
     ...
-    ]
   ]
 end
 ~~~
