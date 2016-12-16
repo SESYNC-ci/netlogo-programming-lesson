@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Programming NetLogo Simulations</title>
+<meta name="description" content="Scripting Agent-Based Models in NetLogo.">
+<link rel="canonical" href="https://sesync-ci.github.io/netlogo-programming-lesson/class/archive.html">
+
+	  <link rel="stylesheet" href="https://cdn.rawgit.com/sesync-ci/lesson-style/1.1/docs/css/static.css">
+  </head>
+  <body>
+	  <div class="page-content">
+	    <div class="wrapper">
+        
+        
+<h1 style="text-transform: none;" id="programming-netlogo-simulations">Programming NetLogo Simulations</h1>
+
+<p>Lesson 2 with <em>Nick Magliocca</em></p>
+
+<h2 id="contents">Contents</h2>
+
+<ul>
+  <li><a href="#/slides/intro">NetLogo Procedures</a></li>
+  <li><a href="#/slides/turtles">Let’s Create a New Model!</a></li>
+  <li><a href="#/slides/environment">Creating an Environment</a></li>
+  <li><a href="#/slides/monitors">Creating Monitors</a></li>
+  <li><a href="#/slides/switches">Switches and Labels</a></li>
+  <li><a href="#/slides/behavior">More Dynamics and Behavior</a></li>
+  <li><a href="#/slides/plot">Plotting</a></li>
+  <li><a href="#/slides/sliders">Sliders</a></li>
+  <li><a href="#/slides/conclude">Final Note</a></li>
+</ul>
+
+<hr />
+
+<p><a name="/slides/intro"></a></p>
+
+<h2 id="netlogo-procedures">NetLogo Procedures</h2>
+
+<p>Thus far, we have covered how to access, modify, and direct all entities in NetLogo.</p>
+
+<p>Now it is time to learn the heart of NetLogo: the Code tab.</p>
+
+<p>The way to make patches and turtles do more complex things is by creating procedures. A procedure combines a series of NetLogo commands into a single new command that you define.</p>
+
+<h2 id="specific-objective">Specific objective</h2>
+
+<p>Create a simple ecosystem model of vegetation growth, herbivore grazing, and herbivore life cycle.</p>
+
+<p class="ToS"><a href="#/slides/intro">Top of Section</a></p>
+
+<hr />
+
+<p><a name="/slides/turtles"></a></p>
+
+<h2 id="lets-create-a-new-model">Let’s Create a New Model!</h2>
+
+<p>To start a new model, select <code class="highlighter-rouge">New</code> from the <code class="highlighter-rouge">File</code> menu. Begin by creating a setup button with the following steps:</p>
+
+<ol>
+  <li>Click the “Add” icon in the toolbar at the top of the Interface tab.</li>
+  <li>On the menu next to “Add”, select “Button” (if it isn’t already selected).</li>
+  <li>Click wherever you want the button to appear in the empty white area of the “Interface” tab.</li>
+  <li>A dialog box for editing the button opens. Type <code class="highlighter-rouge">setup</code> in the box labeled “Commands”.</li>
+  <li>Press the “OK” button when you’re done; the dialog box closes.</li>
+</ol>
+
+<p>Red sticky notes if this didn’t work for you.</p>
+
+<p>Now you have a setup button.</p>
+
+<p>Pressing the button runs a procedure called “setup”. A procedure is a sequence of NetLogo commands that we assign a new name. We’ll define that procedure soon.</p>
+
+<p>The button refers to a procedure that doesn’t exist, so the button turns red.</p>
+
+<p>If you want to see the actual error message, click the button.</p>
+
+<h2 id="create-the-setup-procedure">Create the Setup Procedure</h2>
+
+<p>Swtich to the code tab and type:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to setup
+  clear-all
+  create-turtles 100 [ setxy random-xcor random-ycor ]
+  reset-ticks
+end
+</code></pre>
+</div>
+
+<p>Note: Every procedure begins with <code class="highlighter-rouge">to</code> and ends with <code class="highlighter-rouge">end</code>.</p>
+
+<h2 id="understanding-the-setup-procedure">Understanding the Setup Procedure</h2>
+
+<p>What do these lines of code do?</p>
+
+<ul>
+  <li><code class="highlighter-rouge">to setup</code> begins defining a procedure named “setup”.</li>
+  <li><code class="highlighter-rouge">clear-all</code> resets the world to an initial, empty state. All the patches turn black and any turtles you might have created disappear. Basically, it wipes the slate clean for a new model run.</li>
+  <li><code class="highlighter-rouge">create-turtles 100</code> creates 100 turtles. They start out standing at the origin, that is, the center of patch 0,0.</li>
+  <li>After <code class="highlighter-rouge">create-turtles</code> we can put commands for the new turtles to run, enclosed by square brackets.</li>
+</ul>
+
+<ul>
+  <li><code class="highlighter-rouge">setxy random-xcor random-ycor</code> is a command using “reporters”. A reporter, as opposed to a command, reports a result. First each turtle runs the reporter random-xcor which will report a random number from the allowable range of turtle coordinates along the X axis. Then each turtle runs the reporter random-ycor, same for the Y axis. Finally each turtle runs the <code class="highlighter-rouge">setxy</code> command with those two numbers as inputs. That makes the turtle move to the point with those coordinates.</li>
+  <li><code class="highlighter-rouge">reset-ticks</code> starts the tick counter, now that setup is otherwise complete.</li>
+  <li><code class="highlighter-rouge">end completes</code> the definition of the “setup” procedure.</li>
+</ul>
+
+<p>Switch to the Interface tab and press the setup button you made before. Repeat to see the effects of the random initialization.</p>
+
+<h2 id="control-the-view">Control the View</h2>
+
+<p>Now that we’re using the tick counter (automatically created with <code class="highlighter-rouge">reset-ticks</code>), we should tell NetLogo that it only needs to update the view once per tick, instead of continuously updating it.</p>
+
+<ul>
+  <li>Find the view updates menu. It’s above the view and by default says “continuous”.</li>
+  <li>Choose “on ticks” instead.</li>
+</ul>
+
+<h2 id="make-the-go-button">Make the Go Button</h2>
+
+<p>Now make a button called “go”. Follow the same steps you used to make the setup button, except:</p>
+
+<ul>
+  <li>For Commands enter <code class="highlighter-rouge">go</code> instead of <code class="highlighter-rouge">setup</code>.</li>
+  <li>Check the “Forever” checkbox in the edit dialog.</li>
+  <li>Check the “Disable until ticks start” checkbox too.</li>
+</ul>
+
+<p>The “Forever” checkbox makes the button stay down once pressed, so its commands run over and over again, not just once.</p>
+
+<p>The “Disable until ticks start” prevents you from pressing go before setup.</p>
+
+<h2 id="add-the-go-procedure">Add the Go Procedure</h2>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to go
+  move-turtles
+  tick
+end
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">tick</code> is a primitive (i.e., built-in to NetLogo) that advances the tick counter by one tick.</p>
+
+<p><code class="highlighter-rouge">move-turtles</code> is not, and we need to add another procedure. Note that it is common that one procedure might have (many) others nested within (i.e., dependencies).</p>
+
+<h2 id="add-the-move-procedure">Add the Move Procedure</h2>
+
+<p>Add the <code class="highlighter-rouge">move-turtles</code> procedure after the <code class="highlighter-rouge">go</code> procedure:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to move-turtles
+  ask turtles [
+    right random 360
+    forward 1
+  ]
+end
+</code></pre>
+</div>
+
+<p>Note there are no spaces around the hyphen in <code class="highlighter-rouge">move-turtles</code>. Earlier, we used <code class="highlighter-rouge">red - 2</code>, with spaces, in order to subtract two numbers, but here we want <code class="highlighter-rouge">move-turtles</code>, without spaces. The “-“ combines “move” and “turtles” into a single name.</p>
+
+<p>Once finished adding the code, go back to the Interface, click <code class="highlighter-rouge">setup</code> to initialize and <code class="highlighter-rouge">go</code> to make your agents move.</p>
+
+<p>Green sticky notes when you’ve gotten this to work.</p>
+
+<h2 id="coding-best-practices">Coding Best Practices</h2>
+
+<p>Why couldn’t we have just written all of these commands in <code class="highlighter-rouge">go</code> instead of in a separate procedure?</p>
+
+<p>We could have, but during the course of building your model, it’s likely that you’ll add many other parts. We’d like to keep <code class="highlighter-rouge">go</code> as simple as possible, so that it is easy to understand.</p>
+
+<p>Eventually, it will include many other things you want to have happen as the model runs, such as calculating something or plotting the results.</p>
+
+<p>Each of these things to do will have its own procedure and each procedure will have its own unique name.</p>
+
+<p class="ToS"><a href="#/slides/turtles">Top of Section</a></p>
+
+<hr />
+
+<p><a name="/slides/environment"></a></p>
+
+<h2 id="creating-an-environment">Creating an Environment</h2>
+
+<p>Now we’ve got 100 turtles aimlessly moving around, completely unaware of anything else around them. Let’s create a structured environemnt through which they will move.</p>
+
+<p>Go back to the <code class="highlighter-rouge">setup</code> procedure. We can rewrite it as follows:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to setup
+  clear-all
+  setup-patches
+  setup-turtles
+  reset-ticks
+end
+</code></pre>
+</div>
+
+<p>The new definition of <code class="highlighter-rouge">setup</code> refers to two new procedures we need to define.</p>
+
+<p>To define <code class="highlighter-rouge">setup-patches</code>, add this:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to setup-patches
+  ask patches [ set pcolor green ]
+end
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">setup-patches</code> procedure sets the color of every patch to green to start with.</p>
+
+<p>The only part remaining in our new <code class="highlighter-rouge">setup</code> that is still undefined is setup-turtles. Add this procedure too:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to setup-turtles
+  create-turtles 100
+  ask turtles [ setxy random-xcor random-ycor ]
+end
+</code></pre>
+</div>
+
+<p>Go back to the interface, click “setup” and “go”.</p>
+
+<p>Green sticky notes when you’ve gotten this to work.</p>
+
+<h2 id="adding-turtle-attributes-and-behavior">Adding Turtle Attributes and Behavior</h2>
+
+<p>Thus far, our turtles are just running around. Let’s add some interaction between the turtles and the patches.</p>
+
+<p>We’ll make the turtles eat “grass” (the green patches), reproduce, and die. The grass will change color and gradually grow back after it is eaten.</p>
+
+<p>We’ll need a way of controlling when a turtle reproduces and dies. We’ll determine that by keeping track of how much “energy” each turtle has. To do that we need to add a new turtle variable.</p>
+
+<p>You’ve already seen built-in turtle variables like <code class="highlighter-rouge">color</code>. To make a new turtle variable, we add a <code class="highlighter-rouge">turtles-own</code> declaration at the top of the Code tab, before all the procedures.</p>
+
+<p>Call it energy:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>turtles-own [energy]
+</code></pre>
+</div>
+
+<h2 id="rewrite-the-go-procedure">Rewrite the Go procedure</h2>
+
+<p>Let’s use this newly defined variable (energy) to allow the turtles to eat. Go down to the <code class="highlighter-rouge">go</code> procedure and rewrite as:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to go
+  move-turtles
+  eat-grass
+  tick
+end
+</code></pre>
+</div>
+
+<h2 id="the-if-statement">The <code class="highlighter-rouge">if</code> statement</h2>
+
+<p>A turtle has direct access to the variables of the patch it is standing on. We want each turtle to determine whether the value of the patch color it is on (pcolor) is “green”, and if so, to gain energy by eating grass.</p>
+
+<p>Add a new <code class="highlighter-rouge">eat-grass</code> procedure below the <code class="highlighter-rouge">move-turtle</code> procedure:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to eat-grass
+  ask turtles [
+    ...
+  ]
+end
+</code></pre>
+</div>
+
+<p>An “if statement” allows the program to exectue one procedure if and only if the patch color is green. Only then will the turtle run commands given inside brackets and following the test:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to eat-grass
+  ask turtles [
+    if pcolor = green [
+      set pcolor black
+      set energy energy + 10
+    ]
+  ]
+end
+</code></pre>
+</div>
+
+<p>The commands make the turtle change the patch color to black and increase its own energy by 10. The patch turns black to signify that the grass at that spot has been eaten.</p>
+
+<h2 id="movement-costs-energy">Movement Costs Energy</h2>
+
+<p>Next, let’s make the movement of turtles use up some of the turtle’s energy.</p>
+
+<p>Rewrite <code class="highlighter-rouge">move-turtles</code> as follows:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to move-turtles
+  ask turtles [
+    right random 360
+    forward 1
+    set energy energy - 1
+  ]
+end
+</code></pre>
+</div>
+
+<p>Switch back to the Interface, click “setup” and “go”, and watch your turtles graze!</p>
+
+<p>Green sticky notes when you get this to work.</p>
+
+<p class="ToS"><a href="#/slides/environment">Top of Section</a></p>
+
+<hr />
+
+<p><a name="/slides/monitors"></a></p>
+
+<h2 id="creating-monitors">Creating Monitors</h2>
+
+<p>Use the monitor to get real-time reporting on the states of model entities.</p>
+
+<p>Just like creating a button, create a monitor by clicking the “Add” icon on the toolbar, selecting “Monitor” next to it, and clicking on an open spot in the Interface.</p>
+
+<p>A dialog box will appear.</p>
+
+<ul>
+  <li>In the dialog type: <code class="highlighter-rouge">count turtles</code>.</li>
+  <li>Press the OK button to close the dialog.</li>
+</ul>
+
+<p><code class="highlighter-rouge">turtles</code> is an “agentset”, the set of all turtles.</p>
+
+<h2 id="create-another-monitor">Create another Monitor</h2>
+
+<p>Create a monitor by clicking the “Add” icon on the toolbar, selecting “Monitor” next to it, and clicking on an open spot in the Interface.</p>
+
+<p>A dialog box will again appear.</p>
+
+<ul>
+  <li>In the Reporter section of the dialog box type: <code class="highlighter-rouge">count patches with [pcolor = green]</code></li>
+  <li>In the Display name section of the dialog box type: <code class="highlighter-rouge">grass patches</code></li>
+  <li>Press the OK button to close the dialog box.</li>
+</ul>
+
+<p>Use the setup and go buttons and watch the numbers in the monitors change.</p>
+
+<p>Green sticky notes when you get this to work.</p>
+
+<p class="ToS"><a href="#/slides/monitors">Top of Section</a></p>
+
+<hr />
+
+<p><a name="/slides/switches"></a></p>
+
+<h2 id="switches-and-labels">Switches and Labels</h2>
+
+<p>What else is going on that we can track? Turtles are gaining and losing energy as they move around and graze.</p>
+
+<p>Let’s create a switch to allow us to toggle energy reporting on and off.</p>
+
+<ul>
+  <li>Click on the “Add” icon on the toolbar (in the Interface tab).</li>
+  <li>Select “Switch” from the menu next to “Add”.</li>
+  <li>Click on an open spot in the interface.</li>
+</ul>
+
+<p>A dialog will appear.</p>
+
+<ul>
+  <li>Into the Global variable field, type <code class="highlighter-rouge">show-energy?</code></li>
+  <li>Don’t forget to include the question mark in the name.</li>
+</ul>
+
+<h2 id="add-energy-switch-procedure">Add Energy Switch procedure</h2>
+
+<p>Go back to the <code class="highlighter-rouge">go</code> procedure in the Code tab.</p>
+
+<p>Rewrite the <code class="highlighter-rouge">eat-grass procedure</code> as follows:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to eat-grass
+  ask turtles [
+    if pcolor = green [
+      set pcolor black
+      set energy energy + 10
+    ]
+  ifelse show-energy?
+    [ set label energy ]
+    [ set label "" ]
+  ]
+end
+</code></pre>
+</div>
+
+<p>Go back to the Interface, toggle the energy switch to “on”, and click the “setup” and “go” buttons.</p>
+
+<p>Green sticky notes when you get this to work.</p>
+
+<h2 id="how-does-ifelse-work">How Does <code class="highlighter-rouge">ifelse</code> Work?</h2>
+
+<p>The <code class="highlighter-rouge">eat-grass</code> procedure introduces the <code class="highlighter-rouge">ifelse</code> command.</p>
+
+<p>Each turtle, when it runs these new commands, checks the value of <code class="highlighter-rouge">show-energy?</code> (determined by the switch).</p>
+
+<p>If the switch is on, comparison is true, and the turtle will run the commands inside the first set of brackets. In this case, it assigns the value for the energy to the label of the turtle.</p>
+
+<p>If the comparison is false (the switch is off) then the turtle runs the commands inside the second set of brackets. In this case, it removes the text labels (by setting the label of the turtle to be nothing with an empty text string).</p>
+
+<p class="ToS"><a href="#/slides/switches">Top of Section</a></p>
+
+<hr />
+
+<p><a name="/slides/behavior"></a></p>
+
+<h2 id="more-dynamics-and-behavior">More Dynamics and Behavior</h2>
+
+<p>Now our turtles are eating. Let’s make them reproduce and die, and have the grass grow back.</p>
+
+<p>We’ll add all three of these behaviors now, by making three separate procedures, one for each behavior.</p>
+
+<p>Rewrite the <code class="highlighter-rouge">go</code> procedure as follows to add more procedures:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to go
+  move-turtles
+  eat-grass
+  reproduce
+  check-death
+  regrow-grass
+  tick
+end
+</code></pre>
+</div>
+
+<h2 id="procedure-for-reproduction">Procedure for Reproduction</h2>
+
+<p>Add the procedures for <code class="highlighter-rouge">reproduce</code>, <code class="highlighter-rouge">check-death</code>, and <code class="highlighter-rouge">regrow-grass</code>, starting with <code class="highlighter-rouge">reproduce</code>  as shown below:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to reproduce
+  ask turtles [
+    if energy &gt; 50 [
+      set energy energy - 50
+      hatch 1 [ set energy 50 ]
+    ]
+  ]
+end
+</code></pre>
+</div>
+
+<h2 id="interpreting-the-reproduce-procedure">Interpreting the <code class="highlighter-rouge">reproduce</code> procedure</h2>
+
+<p>When each turtle runs <code class="highlighter-rouge">reproduce</code>, it checks the value of the turtle’s energy variable.</p>
+
+<p>If it is greater than 50, then the turtle runs the commands inside the first set of brackets.</p>
+
+<p>In this case, it decreases the turtle’s energy by 50, then “hatches” a new turtle with an energy of 50.</p>
+
+<p>The hatch command is a NetLogo primitive which looks like this: hatch number [ commands ]. This turtle creates number new turtles, each identical to its parent, and asks the new turtle(s) that have been hatched to run commands. You can use the commands to give the new turtles different colors, headings, or whatever. In our case we run one command. We set the energy for the newly hatched turtle to be 50.</p>
+
+<h2 id="procedure-for-death">Procedure for death</h2>
+
+<p>Add the following code for <code class="highlighter-rouge">check-death</code>:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to check-death
+  ask turtles [
+    if energy &lt;= 0 [ die ]
+  ]
+end
+</code></pre>
+</div>
+
+<h2 id="interpreting-the-check-death-procedure">Interpreting the <code class="highlighter-rouge">check-death</code> procedure</h2>
+
+<p>Each turtle, when it runs check-death it will check to see if its energy is less than or equal to 0.</p>
+
+<p>If this is true, then the turtle is told to die (die is a NetLogo primitive).</p>
+
+<h2 id="procedure-for-regrowing-the-grass">Procedure for regrowing the grass</h2>
+
+<p>Add the procedures for <code class="highlighter-rouge">regrow-grass</code> as shown below:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to regrow-grass
+  ask patches [
+    if random 100 &lt; 3 [ set pcolor green ]
+  ]
+end
+</code></pre>
+</div>
+
+<h2 id="interpreting-the-regrow-grass-procedure">Interpreting the <code class="highlighter-rouge">regrow-grass</code> procedure</h2>
+
+<p>When each patch runs <code class="highlighter-rouge">regrow-grass</code> it will check to see if a random integer from 0 to 99 is less than 3.</p>
+
+<p>If so, the patch color is set to green. This will happen 3% of the time (on average) for each patch, since there are three numbers (0, 1, and 2) out of 100 possible that are less than 3.</p>
+
+<h2 id="run-it">Run it!</h2>
+
+<p>Go back to the Interface, toggle the energy switch to “off,” and click the “setup” and “go” buttons.</p>
+
+<p>Green sticky notes when you get this to work.</p>
+
+<p>What do you notice about the dynamics? How is this communicated through the Monitors?</p>
+
+<p class="ToS"><a href="#/slides/behavior">Top of Section</a></p>
+
+<hr />
+
+<p><a name="/slides/plot"></a></p>
+
+<h2 id="plotting">Plotting</h2>
+
+<p>Wouldn’t it be nice if we had a easier way to track the changes in the model behavior over time?</p>
+
+<p>Fortunately, NetLogo allows us to plot data as we go along.</p>
+
+<p>To make plotting work, we’ll need to create a plot in the Interface tab and put some commands inside it.</p>
+
+<h2 id="create-a-plot">Create a plot</h2>
+
+<p>The commands we put in the plots will run automatically when our setup procedure calls reset-ticks and when our go procedure calls tick.</p>
+
+<ul>
+  <li>Create a plot by clicking the “Add” icon on the toolbar, selecting “Plot” next to it, and clicking on an open spot in the Interface.</li>
+  <li>Set its Name to “Totals”</li>
+  <li>Set the X axis label to “time”</li>
+  <li>Set the Y axis label to “totals”</li>
+  <li>Change the name of the “default” pen to “turtles”.</li>
+  <li>Enter plot count turtles under “Pen Update Commands”.</li>
+  <li>Press the “Add Pen” button.</li>
+  <li>Change the name of the new pen to “grass”.</li>
+  <li>Enter <code class="highlighter-rouge">plot count patches with [pcolor = green]</code> under “Pen Update Commands”.</li>
+  <li>Press OK in the Plot dialog to finish editing.</li>
+</ul>
+
+<p>Go back to the Interface and click the “setup” and “go” buttons.</p>
+
+<p>Green sticky notes when you get this to work.</p>
+
+<h2 id="plotting-notes">Plotting notes</h2>
+
+<ol>
+  <li>
+    <p>There are not labels for the lines in the plot. Mouse over the Interface and you’ll notice that your cursor turns to cross-hairs. Click and hold while dragging over some part of the plot until it is highlighted. Now the plot is selected. Notice that the Edit and Delete buttons are no longer greyed-out. Click Edit to open the plot dialog, and then click the “Show Legend?” box.</p>
+  </li>
+  <li>
+    <p>When you create the plot you can also set the minimum and maximum values on the X and Y axes. You’ll want to leave the “Auto Scale” checkbox checked, so that if anything you plot exceeds the minimum and maximum values for the axes, the axes will automatically grow so you can see all the data.</p>
+  </li>
+  <li>
+    <p>The term “pen” is a little weird, right? But here’s the raionale … we used the plot command to add the next point to a plot. This command moves the current plot pen to the point that has an X coordinate equal to 1 greater than the previously plotted X coordinate and a Y coordinate equal to the value given in the plot command (in the first case, the number of turtles, and in the second case, the number of green patches). As the pens move they each draw a line.</p>
+  </li>
+</ol>
+
+<h2 id="tick-counter">Tick counter</h2>
+
+<p>To make comparisons between plots from one model run and another, it is often useful to do the comparison for the same length of model run. This can be done by stopping or starting an action at a specific time by stopping the model at the same point each model run.</p>
+
+<p>Keeping track of how many times the <code class="highlighter-rouge">go</code> procedure is run is a useful way to cue these actions. That’s what the tick counter does. You’re already using the tick counter in your model, with the <code class="highlighter-rouge">reset-ticks</code> and <code class="highlighter-rouge">tick</code> commands, which also trigger plotting.</p>
+
+<p>You can also use the tick counter for other things, such as to set a limit on the total length of a run.</p>
+
+<h2 id="set-the-limit-of-a-model-run">Set the limit of a model run</h2>
+
+<p>Change the go procedure:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to go
+  if ticks &gt;= 300 [ stop ]
+  move-turtles
+  eat-grass
+  check-death
+  reproduce
+  regrow-grass
+  tick
+end
+</code></pre>
+</div>
+
+<p>Now setup and run the model.</p>
+
+<p>Green sticky notes if your model runs and then stops on tick 300.</p>
+
+<p class="ToS"><a href="#/slides/plot">Top of Section</a></p>
+
+<hr />
+
+<p><a name="/slides/sliders"></a></p>
+
+<h2 id="sliders">Sliders</h2>
+
+<p>In case you don’t want to start with the same parameter value each time, sliders are an easy and intuitive way to modify parameters.</p>
+
+<p>Let’s vary the number of turtles we start with.</p>
+
+<ul>
+  <li>Create a slider named “number-of-turtles”: click the Add icon on the toolbar, select Slider next to it, and click on an open spot in the interface.</li>
+  <li>Then inside of setup-turtles, instead of create-turtles 100 you can type:</li>
+</ul>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to setup-turtles
+  create-turtles number-of-turtles
+end
+</code></pre>
+</div>
+
+<p>Go back to the Interface, move the slider to change the number of agents, and click “setup” and “go”.</p>
+
+<p>Red sticky notes if this did not work for you.</p>
+
+<h2 id="more-sliders">More Sliders</h2>
+
+<p>Adjust the energy the turtles gain and lose as they eat grass and reproduce.</p>
+
+<p>Make a slider called “energy-from-grass”.</p>
+
+<p>Then, inside of <code class="highlighter-rouge">eat-grass</code>, make this change:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to eat-grass
+  ask turtles [
+    if pcolor = green [
+      set pcolor black
+      set energy energy + energy-from-grass
+    ]
+    ifelse show-energy?
+      [ set label energy ]
+      [ set label "" ]
+  ]
+end
+</code></pre>
+</div>
+
+<p>Make another slider called “birth-energy”.</p>
+
+<p>Inside of <code class="highlighter-rouge">reproduce</code>, make this change:</p>
+
+<div class="text-document highlighter-rouge" title="Code"><pre class="highlight"><code>to reproduce
+  ask turtles [
+    if energy &gt; birth-energy [
+      set energy energy - birth-energy
+      hatch 1 [ set energy birth-energy ]
+    ]
+  ]
+end
+</code></pre>
+</div>
+
+<h2 id="challenge">Challenge</h2>
+
+<p>Are there other parameters that could be varied? Write one or more sliders for these parameters.</p>
+
+<p>(Hint: grass regrowth rate, movement of turtles ….)</p>
+
+<p class="ToS"><a href="#/slides/sliders">Top of Section</a></p>
+
+<hr />
+
+<p><a name="/slides/conclude"></a></p>
+
+<h2 id="final-note">Final Note</h2>
+
+<p>Don’t forget to comment your code! It has been said that best practice is at least 50% of your key strokes should be comments. Comments let you mix an explanation the code right in with the code itself. You might use comments to help others understand your model, or you might use them as notes to yourself.</p>
+
+<p>Comments begin with “;;” and continue to the end of the line. In the Code tab, comments are gray, so your eyes can pick them out easily.</p>
+
+<h2 id="acknowledgements--support">Acknowledgements &amp; Support</h2>
+
+<p>Portions of the instructional materials are adopted from Tutorial #3 in the <a href="https://ccl.northwestern.edu/netlogo/docs/tutorial3.html" target="_blank">NetLogo User Manual</a>.</p>
+
+<p class="ToS"><a href="#/slides/conclude">Top of Section</a></p>
+
+<hr />
+
+
+
+	    </div>
+	  </div>
+  </body>
+</html>
