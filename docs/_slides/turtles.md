@@ -6,10 +6,10 @@
 To start a new model, select `New` from the `File` menu. Begin by creating a setup button with the following steps:
 
 1. Click the "Add" icon in the toolbar at the top of the Interface tab. 
-1. On the menu next to Add, select Button (if it isn't already selected). 
-1. Click wherever you want the button to appear in the empty white area of the Interface tab. 
-1. A dialog box for editing the button opens. Type setup in the box labeled "Commands". 
-1. Press the OK button when you're done; the dialog box closes.
+1. On the menu next to "Add", select "Button" (if it isn't already selected). 
+1. Click wherever you want the button to appear in the empty white area of the "Interface" tab.
+1. A dialog box for editing the button opens. Type `setup` in the box labeled "Commands". 
+1. Press the "OK" button when you're done; the dialog box closes.
 
 Red sticky notes if this didn't work for you.
 
