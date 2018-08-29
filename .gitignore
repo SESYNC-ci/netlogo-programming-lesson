@@ -4,7 +4,7 @@ docs/_site
 # R
 .Rhistory
 .Rproj.user
-docs/_slides_Rmd/cache
+cache/
 
 # Jupyter
 .ipynb_checkpoints/
