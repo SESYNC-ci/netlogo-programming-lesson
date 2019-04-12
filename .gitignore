@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-docs/_site
-=======
 # R
 .Rhistory
 .Rproj.user
@@ -12,4 +9,4 @@ cache/
 # Jekyll
 docs/.bundle
 docs/_site
->>>>>>> 82b79ce0f9504fedafbe0fa25397ef9acf263c25
+docs/Gemfile.lock
